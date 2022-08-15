@@ -120,19 +120,19 @@ void BleKeyboard::begin(void)
   hid->hidInfo(0x00, 0x01);
 
 
-#if defined(USE_NIMBLE)
+// #if defined(USE_NIMBLE)
 
-  BLEDevice::setSecurityAuth(true, true, true);
+// //   BLEDevice::setSecurityAuth(true, true, true);
 
-#else
+// #else
 
-  BLESecurity* pSecurity = new BLESecurity();
-  //pSecurity->setAuthenticationMode(ESP_LE_AUTH_REQ_SC_MITM_BOND);
-  //https://github.com/nkolban/esp32-snippets/issues/230#issuecomment-554595413
-  pSecurity->setAuthenticationMode(ESP_LE_AUTH_BOND);
-  pSecurity->setCapability(ESP_IO_CAP_NONE);
+//   BLESecurity* pSecurity = new BLESecurity();
+//   //pSecurity->setAuthenticationMode(ESP_LE_AUTH_REQ_SC_MITM_BOND);
+//   //https://github.com/nkolban/esp32-snippets/issues/230#issuecomment-554595413
+//   pSecurity->setAuthenticationMode(ESP_LE_AUTH_BOND);
+//   pSecurity->setCapability(ESP_IO_CAP_NONE);
 
-#endif // USE_NIMBLE
+// #endif // USE_NIMBLE
 
   hid->reportMap((uint8_t*)_hidReportDescriptor, sizeof(_hidReportDescriptor));
   hid->startServices();
